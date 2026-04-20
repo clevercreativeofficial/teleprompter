@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className='flex flex-col items-center justify-center p-8 font-sans'>
       <Container>
-        <div className='flex gap-4'>
+        <div className='h-[80vh] flex items-center justify-between gap-4'>
           {/* Left Content */}
           <div>
             <div className='flex gap-10 flex-col'>
@@ -136,39 +136,63 @@ export default function Home() {
         </div>
       </Container>
 
-      <div>
-        <Container>
-          <section className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-20'>
-            <div className='card'>
-              <span className='font-serif italic span text-6xl'>01</span>
-              <div className='text-sans text-2xl font-bold my-2'>Write It Once</div>
-              <p className='paragraph'>
-                Paste any script directly into the app. Paragraphs, line breaks,
-                formatting — all preserved exactly as written so you stay in
-                flow.
-              </p>
+      <Container>
+        <section className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-20'>
+          <div className='card'>
+            <span className='font-serif italic span text-6xl'>01</span>
+            <div className='text-sans text-2xl font-bold my-2'>
+              Write It Once
             </div>
-            <div className='card'>
-              <span className='font-serif italic span text-6xl'>02</span>
-              <div className='text-sans text-2xl font-bold my-2'>Read While You Film</div>
-              <p className='paragraph'>
-                Your script scrolls over the live camera feed as a translucent
-                overlay. Front or rear camera. Pause, resume, or reset mid-take
-                with a single tap.
-              </p>
+            <p className='paragraph'>
+              Paste any script directly into the app. Paragraphs, line breaks,
+              formatting — all preserved exactly as written so you stay in flow.
+            </p>
+          </div>
+          <div className='card'>
+            <span className='font-serif italic span text-6xl'>02</span>
+            <div className='text-sans text-2xl font-bold my-2'>
+              Read While You Film
             </div>
-            <div className='card'>
-              <span className='font-serif italic span text-6xl'>03</span>
-              <div className='text-sans text-2xl font-bold my-2'>Download Instantly</div>
-              <p className='paragraph'>
-                When you're done, preview the recording directly in the browser
-                and save it to your phone in one tap. No accounts, no cloud
-                upload required.
-              </p>
+            <p className='paragraph'>
+              Your script scrolls over the live camera feed as a translucent
+              overlay. Front or rear camera. Pause, resume, or reset mid-take
+              with a single tap.
+            </p>
+          </div>
+          <div className='card'>
+            <span className='font-serif italic span text-6xl'>03</span>
+            <div className='text-sans text-2xl font-bold my-2'>
+              Download Instantly
             </div>
-          </section>
-        </Container>
-      </div>
+            <p className='paragraph'>
+              When you&apos;re done, preview the recording directly in the
+              browser and save it to your phone in one tap. No accounts, no
+              cloud upload required.
+            </p>
+          </div>
+        </section>
+      </Container>
+
+      <Container>
+        {/* Left Content */}
+          <div className='h-[60vh] flex items-center justify-start gap-4 my-22 flex-col text-center'>
+            <div className='flex gap-10 flex-col justify-center'>
+              <div className='flex items-center justify-center gap-4'>
+                <small className='uppercase tracking-widest'>
+                  Ready to roll?
+                </small>
+              </div>
+              <h1 className='text-6xl font-serif font-black'>
+                Open it on your{" "}
+                <span className='span block italic'>device.</span>
+              </h1>
+            </div>
+
+            <p className='paragraph max-w-2xl my-6'>
+              Open PromptRoll directly in your mobile browser. No app store. No install.
+            </p>
+          </div>
+      </Container>
     </div>
   );
 }
