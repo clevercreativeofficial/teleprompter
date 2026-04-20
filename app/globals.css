@@ -1,0 +1,352 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --amber: #e8a020;
+  --amber-dim: rgba(232, 160, 32, 0.1);
+  --amber-glow: rgba(232, 160, 32, 0.22);
+  --red: #d93c22;
+  --cream: #f0ede6;
+  --muted: #55545c;
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+span.dot{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color:var(--amber);
+}
+
+span.span{
+  color: var(--amber) !important;
+}
+
+.paragraph{
+  font-size: 14px;
+  opacity: 65%;
+}
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #222222;
+  border: 1px solid #424242;
+  color: #acacac;
+  border-radius: 9999px;
+}
+
+.badge-color {
+  background-color: var(--amber-dim);
+  border: 1px solid var(--amber);
+  color: var(--foreground);
+  transition: all 300ms ease-in-out;
+}
+
+/* ── RIGHT COLUMN — PHONE MOCKUP ───────────────── */
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  animation: fadeUp 1.1s ease both;
+}
+
+.phone-wrap {
+  position: relative;
+  width: 240px;
+}
+
+/* Phone shell */
+.phone {
+  width: 240px;
+  height: 488px;
+  background: #111118;
+  border-radius: 38px;
+  border: 2px solid #2a2a36;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(232, 160, 32, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Notch */
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 28px;
+  background: #0a0a10;
+  border-radius: 0 0 18px 18px;
+  z-index: 5;
+}
+
+/* Camera lens */
+.phone::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #1a1a24;
+  border-radius: 50%;
+  border: 1.5px solid #2a2a36;
+  z-index: 6;
+}
+
+/* Side buttons */
+.phone-vol,
+.phone-power {
+  position: absolute;
+  background: #1e1e28;
+  border-radius: 2px;
+}
+.phone-vol {
+  left: -3px;
+  top: 100px;
+  width: 3px;
+  height: 36px;
+  box-shadow:
+    0 18px 0 #1e1e28,
+    0 36px 0 #1e1e28;
+}
+.phone-power {
+  right: -3px;
+  top: 130px;
+  width: 3px;
+  height: 50px;
+}
+
+/* Screen content */
+.phone-screen {
+  position: absolute;
+  inset: 0;
+  background: #060609;
+  border-radius: 36px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Simulated camera feed */
+.sim-camera {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(160deg, #0d1520 0%, #0a0a14 60%, #160d08 100%);
+  overflow: hidden;
+}
+
+/* Animated scan lines */
+.sim-camera::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.012) 3px,
+    rgba(255, 255, 255, 0.012) 4px
+  );
+}
+
+/* Scrolling teleprompter lines */
+.sim-scroll {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 14px;
+  animation: sim-scroll-anim 8s linear infinite;
+}
+@keyframes sim-scroll-anim {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-420px);
+  }
+}
+.sim-line {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.85);
+  margin-bottom: 10px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+.sim-line:nth-child(odd) {
+  width: 92%;
+}
+.sim-line:nth-child(even) {
+  width: 78%;
+}
+.sim-line:nth-child(3n) {
+  width: 85%;
+}
+.sim-line.short {
+  width: 55%;
+}
+
+/* Reading line */
+.sim-reading-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 42%;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--amber), transparent);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+/* Sim controls bar */
+.sim-controls {
+  height: 52px;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+.sim-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.sim-rec {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(217, 60, 34, 0.5);
+}
+
+/* REC badge on phone */
+.sim-rec-badge {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 3;
+}
+.sim-rec-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: blink 1.1s ease-in-out infinite;
+}
+.sim-rec-text {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+
+/* Floating badge behind phone */
+.float-badge {
+  position: absolute;
+  background: #12121a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+.badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--amber-dim);
+  border: 1px solid rgba(232, 160, 32, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.badge-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(240, 237, 230, 0.7);
+}
+.badge-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--amber);
+}
+
+.float-badge.b1 {
+  bottom: 80px;
+  left: -90px;
+  animation: float1 4s ease-in-out infinite;
+}
+.float-badge.b2 {
+  top: 100px;
+  right: -80px;
+  animation: float2 5s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
